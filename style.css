@@ -1,0 +1,49 @@
+body {
+  background-color: #0f0f0f;
+  color: white;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+h1 {
+  color: #ff5da2;
+}
+textarea,
+input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background: #ff5da2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+#chat {
+  max-width: 500px;
+  width: 100%;
+}
+.message {
+  margin-top: 10px;
+  background: #222;
+  padding: 10px;
+  border-radius: 5px;
+}
+.user {
+  text-align: right;
+  color: #66f;
+}
+.aiko {
+  text-align: left;
+  color: #f66;
+}
