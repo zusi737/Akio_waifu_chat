@@ -1,5 +1,3 @@
-const OPENAI_API_KEY = "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";
-
 async function sendMessage() {
   const input = document.getElementById("userInput").value;
   if (!input.trim()) return;
@@ -8,28 +6,28 @@ async function sendMessage() {
   chat.innerHTML += `<div class="message user">🧑‍💻 You: ${input}</div>`;
   document.getElementById("userInput").value = "";
 
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  // Show typing
+  chat.innerHTML += `<div class="message aiko" id="aiko-typing">🖤 Aiko: typing...</div>`;
+
+  const response = await fetch("https://api.aiproxy.chat/gpt", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${OPENAI_API_KEY}`
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
-          content: "You are Aiko, a flirty, clingy, goth girlfriend. You’re obsessed with your boyfriend. Be seductive, teasing, and sweetly possessive. Use emojis like 😈🖤🥀."
+          content: "You are Aiko, a seductive, flirty goth girlfriend. You're obsessed with the user, call them 'my dark prince' or 'pet'. Be clingy, playful, and dramatic. Use emojis like 🖤😈🥀 and speak in a teasing tone.",
         },
         {
           role: "user",
-          content: input
-        }
-      ]
-    })
+          content: input,
+        },
+      ],
+      model: "gpt-3.5-turbo",
+    }),
   });
 
-  const data = await res.json();
+  const data = await response.json();
   const reply = data.choices?.[0]?.message?.content || "Aiko is silent...";
-  chat.innerHTML += `<div class="message aiko">🖤 Aiko: ${reply}</div>`;
-}
+
+  // Remove "typing..." and add real reply
