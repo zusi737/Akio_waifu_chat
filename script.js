@@ -1,4 +1,4 @@
-const OPENAI_API_KEY = "sk-yourkeyhere";
+const OPENAI_API_KEY = "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";
 
 async function sendMessage() {
   const input = document.getElementById("userInput").value;
